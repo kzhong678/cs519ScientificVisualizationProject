@@ -4,7 +4,7 @@ import dash_html_components as html
 import plotly.graph_objs as go
 
 ########### Define your variables
-beers=['Beer 1', 'Beer 2', 'Beer 3', 'Beer 4]
+beers=['Beer 1', 'Beer 2', 'Beer 3', 'Beer 4']
 ibu_values=[35, 65, 80, 70]
 abv_values=[5.9, 4.1, 10.2, 3.3]
 color1='darkgreen'
