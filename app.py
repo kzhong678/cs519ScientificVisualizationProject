@@ -4,18 +4,18 @@ import dash_html_components as html
 import plotly.graph_objs as go
 
 ########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-color1='darkred'
-color2='orange'
+beers=['Beer 1, 'Beer 2, 'Beer 3', 'Beer 4]
+ibu_values=[35, 65, 80, 70]
+abv_values=[5.9, 4.1, 10.2, 3.3]
+color1='darkgreen'
+color2='blue'
 mytitle='Beer Comparison'
 tabtitle='beer!'
-myheading='Flying Dog Beers'
+myheading='Beer Company'
 label1='IBU'
 label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
+githubLink='https://github.com/kzhong678/flying-dog-beers'
+originalGithublink='https://github.com/austinlasseter/flying-dog-beers'
 
 ########### Set up the chart
 bitterness = go.Bar(
@@ -53,9 +53,9 @@ app.layout = html.Div(children=[
         id='flyingdog',
         figure=beer_fig
     ),
-    html.A('Code on Github', href=githublink),
+    html.A('The code for this project can be found here.', href=githubLink),
     html.Br(),
-    html.A('Data Source', href=sourceurl),
+    html.A('This code was forked from this repo', href=originalGithublink),
     ]
 )
 
