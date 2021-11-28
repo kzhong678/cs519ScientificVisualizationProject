@@ -24,7 +24,7 @@ githublink = 'https://github.com/kzhong678/cs519ScientificVisualizationProject'
 
 import pandas as pd
 df = pd.read_csv('assets/usa-2011-agriculture.csv')
-
+options_list=list(['Rice', 'Wheat', 'Corn', 'Feeds','Grain Products'])
 fig = go.Figure(data=go.Choropleth(
     locations=df['code'], # Spatial coordinates
     z = df[mycolumn].astype(float), # Data to be color-coded
@@ -50,6 +50,11 @@ app.title=tabtitle
 
 app.layout = html.Div(children=[
     html.H1(myheading1),
+    dcc.Dropdown(
+        id='dropdown',
+        options=[{'label': i, 'value': i} for i in options_list],
+        value=options_list[0]
+    ),
     dcc.Graph(
         id='figure-1',
         figure=fig
