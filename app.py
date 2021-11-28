@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A("Link to Plot Doccumentation", href=sourceurl),
+    html.A("Plotly Link", href=sourceurl),
     ]
 )
 
