@@ -2,43 +2,44 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+import pandas as pd
 
-########### Define your variables
-beers=['Beer 1', 'Beer 2', 'Beer 3', 'Beer 4']
-ibu_values=[35, 65, 80, 70]
-abv_values=[5.9, 4.1, 10.2, 3.3]
-color1='darkgreen'
-color2='blue'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Beer Company'
-label1='IBU'
-label2='ABV'
-githubLink='https://github.com/kzhong678/flying-dog-beers'
-originalGithublink='https://github.com/austinlasseter/flying-dog-beers'
+########### Define your variables ######
 
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
+# here's the list of possible columns to choose from.
+list_of_columns =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
+       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
+       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
+
+mycolumn='corn'
+myheading1 = f"Wow! That's a lot of {mycolumn}!"
+mygraphtitle = '2011 US Agriculture Exports by State'
+mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
+mycolorbartitle = "Millions USD"
+tabtitle = 'Old McDonald'
+sourceurl = 'https://plot.ly/python/choropleth-maps/'
+githublink = 'https://github.com/austinlasseter/dash-map-usa-agriculture'
+
+
+########## Set up the chart
+
+import pandas as pd
+df = pd.read_csv('assets/usa-2011-agriculture.csv')
+
+fig = go.Figure(data=go.Choropleth(
+    locations=df['code'], # Spatial coordinates
+    z = df[mycolumn].astype(float), # Data to be color-coded
+    locationmode = 'USA-states', # set of locations match entries in `locations`
+    colorscale = mycolorscale,
+    colorbar_title = mycolorbartitle,
+))
+
+fig.update_layout(
+    title_text = mygraphtitle,
+    geo_scope='usa',
+    width=1200,
+    height=800
 )
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
-)
-
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
-
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
-
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -47,17 +48,19 @@ server = app.server
 app.title=tabtitle
 
 ########### Set up the layout
+
 app.layout = html.Div(children=[
-    html.H1(myheading),
+    html.H1(myheading1),
     dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
+        id='figure-1',
+        figure=fig
     ),
-    html.A('The code for this project can be found here.', href=githubLink),
+    html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A('This code was forked from this repo', href=originalGithublink),
+    html.A("Data Source", href=sourceurl),
     ]
 )
 
+############ Deploy
 if __name__ == '__main__':
     app.run_server()
