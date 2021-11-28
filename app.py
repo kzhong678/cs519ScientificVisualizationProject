@@ -7,11 +7,10 @@ import pandas as pd
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
-       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
-       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
+list_of_columns =['code', 'state', 'category', 'Rice', 'Wheat', 'Corn', 'Feeds',
+'Grain Products']
 
-mycolumn='corn'
+mycolumn='Corn'
 myheading1 = f"Grain Exports!"
 mygraphtitle = '2019 Grain Exports by State'
 mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
@@ -57,7 +56,7 @@ app.layout = html.Div(children=[
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A("Data Source", href=sourceurl),
+    html.A("Link to Plot Doccumentation", href=sourceurl),
     ]
 )
 
