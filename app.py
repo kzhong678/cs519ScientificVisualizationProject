@@ -23,7 +23,7 @@ githublink = 'https://github.com/kzhong678/cs519ScientificVisualizationProject'
 ########## Set up the chart
 
 import pandas as pd
-df = pd.read_csv('assets/usa-2011-agriculture.csv')
+df = pd.read_csv('assets/grain_exports_2019.csv')
 options_list=list(['Rice', 'Wheat', 'Corn', 'Feeds','Grain Products'])
 
 
