@@ -18,6 +18,7 @@ mycolorbartitle = "Millions USD"
 tabtitle = 'CS519 Project'
 sourceurl = 'https://plot.ly/python/choropleth-maps/'
 githublink = 'https://github.com/kzhong678/cs519ScientificVisualizationProject'
+rawdata = 'https://www.ers.usda.gov/data-products/state-agricultural-trade-data/'
 
 
 ########## Set up the chart
@@ -46,6 +47,7 @@ app.layout = html.Div(children=[
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Plot.ly Link", href=sourceurl),
+    html.A("Raw Data", href=rawdata),
     ]
 )
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
