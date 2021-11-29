@@ -47,6 +47,7 @@ app.layout = html.Div(children=[
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Plot.ly Link", href=sourceurl),
+    html.Br(),
     html.A("Raw Data", href=rawdata),
     ]
 )
