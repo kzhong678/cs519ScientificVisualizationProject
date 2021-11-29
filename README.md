@@ -1,7 +1,5 @@
 # How to deploy a simple Plotly Dash app on Heroku
 
-* TODO: Update this README To reflect the project
-
 * You can view the finished app on [Heroku](https://kevin-test-app7.herokuapp.com/).
 * This project was done for CS 519, Data Visualiztion, at the University of Illinois, Urbana Champaign.
 
